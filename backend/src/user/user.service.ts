@@ -1,10 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
-  private users = ['Alice', 'Bob', 'Charlie'];
+  constructor(@Inject('CONFIG') private config: any) {}
 
-  getAllUsers() {
-    return this.users;
+  getConfig() {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return this.config;
   }
 }
